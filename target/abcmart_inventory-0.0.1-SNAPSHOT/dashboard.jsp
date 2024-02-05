@@ -34,11 +34,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
+  
       <%
       	for(int i=0;i<products.size();i++){
       	

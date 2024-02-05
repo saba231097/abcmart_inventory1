@@ -20,17 +20,21 @@ public class LoginController extends HttpServlet{
 		String email=req.getParameter("email");
 		String secrets=req.getParameter("secrets");
 		LoginService service=new LoginService();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(service.authenticateUser(email, secrets)) {
 			HttpSession session=req.getSession();
 			session.setAttribute("user", email);
-			resp.sendRedirect("admin_home.jsp");
+			resp.getWriter().println("Success");
 			
 			
 		}else {
 			
-			req.getSession().setAttribute("loginStatusMSG", "User id or password is wrong!");
-			RequestDispatcher dispatcher=req.getRequestDispatcher("index.jsp");
-			dispatcher.include(req, resp);
+			resp.getWriter().println("Failed");
 		}
 	}
 }

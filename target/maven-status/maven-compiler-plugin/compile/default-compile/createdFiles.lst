@@ -1,5 +1,6 @@
 com\app\service\LoginService.class
 com\app\utils\DBConnection.class
+com\app\controller\CallFilters.class
 com\app\controller\UserController.class
 com\app\dao\UserDAO.class
 com\app\controller\LogutServlet.class
