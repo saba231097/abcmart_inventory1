@@ -131,17 +131,18 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
   }
 }</style>
     <script>
-        
+
         $(document).ready(function(){
            //all codes will go here 
-          document.getElementById("pageLoader").style.display="none";
+
             $("#loginBtn").click(function(){
+
             	document.getElementById("spinner").style.display="block";
                 document.getElementById("loginBtnTxt").style.display="none";
-                document.getElementById("pageLoader").style.display="block";
+
                 var id=document.getElementById("email").value;
                 var pass=document.getElementById("secrets").value;
-                $.post("http://localhost:8080/abcmart_inventory-0.0.1-SNAPSHOT/authUser",
+                $.post("http://localhost:8080/abcinventory/authUser",
                 {
                     email:id,
                     secrets:pass
@@ -149,13 +150,13 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
                 function(data, status){
                 	data=data.trim();
                    if(data=="Success"){
-                	   document.getElementById("pageLoader").style.display="none";
+
                 	   window.location.href = "admin_home.jsp"
                    }else{
                 	   document.getElementById("errLoginMsg").style.display="block";
                 	   document.getElementById("spinner").style.display="none";
                        document.getElementById("loginBtnTxt").style.display="block";
-                       document.getElementById("pageLoader").style.display="none";
+
                    }
                 });
                 
@@ -168,7 +169,7 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
         
     </script>
 <body>
-<div id="pageLoader" class="loading">Loading&#8230;</div>
+
 
 <div class="content"><h3>stuff goes in here!</h3></div>
 <div class="container-fluid">
@@ -195,7 +196,7 @@ box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1
                         <label class="form-check-label" for="remember">Remember me</label>
                     </div>
                     <div class="mb-3 d-grid">
-                        <button type="button" id="loginBtn" class="btn btn-primary">
+                        <button type="button" id="loginBtn" class="btn btn-primary" >
                             <span id="spinner" style="display:none">
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Logging

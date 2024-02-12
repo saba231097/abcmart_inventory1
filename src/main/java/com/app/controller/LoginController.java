@@ -20,12 +20,7 @@ public class LoginController extends HttpServlet{
 		String email=req.getParameter("email");
 		String secrets=req.getParameter("secrets");
 		LoginService service=new LoginService();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		if(service.authenticateUser(email, secrets)) {
 			HttpSession session=req.getSession();
 			session.setAttribute("user", email);
