@@ -126,10 +126,18 @@ console.log(json);
                     data:JSON.stringify(jsonData)
                 },
                 function(data, status){
-                	alert(status);
+                	if(data=="Successfully Added"){
+                    $("#status").html("Products Added Successfully to Inventory");
+                    $("#myModal").modal('show');
+                  } else{
+                    $("#status").html("Failed to add products to inventory");
+                    $("#myModal").modal('show');
+                  }
                 });
     });
-    
+    $("#closeModal").click(function(){
+      $("#myModal").modal('hide');
+    });
 });
 </script>
 </head>
@@ -212,6 +220,34 @@ console.log(json);
                   
                 </tbody>
               </table>
+
+             <!-- Modal Start add product confirmation-->
+             <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Product Add Confirmation</h4>
+                    
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body" id="status">
+                    Products Added Successfully to Inventory
+                  </div>
+            
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="closeModal">Close</button>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+
+            <!-- End of Modal -->
+              
         </div>
         
         

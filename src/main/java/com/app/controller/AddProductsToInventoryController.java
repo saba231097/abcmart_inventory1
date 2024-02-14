@@ -20,7 +20,7 @@ public class AddProductsToInventoryController extends HttpServlet {
         Product[] products= objectMapper.readValue(jsonData, Product[].class);
         boolean addStatus=new ProductDAO().addProductsToInvenDB(products);
         if(addStatus){
-            resp.getWriter().println("Success Fully Added");
+            resp.getWriter().println("Successfully Added");
         }else{
             resp.getWriter().println("Failed to Add");
         }

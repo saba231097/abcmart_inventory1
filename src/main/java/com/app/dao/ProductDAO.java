@@ -10,20 +10,21 @@ import java.sql.Statement;
 public class ProductDAO {
     public boolean addProductsToInvenDB(Product[] products){
         StringBuilder query=new StringBuilder();
-        for(Product p:products){
-            String q="insert into products (`product_name`,`batchnumber`,`category`,`expirydate`," +
-                    "`qty`,`cp_per_unit`,`sp_per_unit`) values('"+p.getProductName()+"','"+p.getBatchNumber()+"" +
-                    "','"+p.getCategory()+"','"+p.getExpiryDate()+"',"+p.getQty()+","+p.getCostPrice()+","+p.getSalePrice()+");";
-            query.append(q);
-        }
+
         System.out.println(query.toString());
         Connection con=null;
         Statement st=null;
         con= DBConnection.getDBConnection();
         try {
             st=con.createStatement();
-            int i=st.executeUpdate(query.toString());
-            if(i>0){
+            for(Product p:products){
+                String q="insert into products (`product_name`,`batchnumber`,`category`,`expirydate`," +
+                        "`qty`,`cp_per_unit`,`sp_per_unit`) values('"+p.getProductName()+"','"+p.getBatchNumber()+"" +
+                        "','"+p.getCategory()+"','"+p.getExpiryDate()+"',"+p.getQty()+","+p.getCostPrice()+","+p.getSalePrice()+");";
+                st.addBatch(q);
+            }
+            int[] insertedRowCount=st.executeBatch();
+            if(insertedRowCount.length>0){
                 return true;
             }
         } catch (SQLException e) {
@@ -38,4 +39,6 @@ public class ProductDAO {
         }
         return false;
     }
+
+
 }

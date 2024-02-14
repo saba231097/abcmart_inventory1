@@ -28,7 +28,7 @@
 
 $(document).ready(function(){
 
-
+  $("#productForm").modal('hide');
 
 
   $("#loginBtn").click(function(){
@@ -76,6 +76,7 @@ console.log(json);
        
       
        $("#productTable tbody").append(dynamicRow)
+       $("#productForm").modal('hide');
 
     });
     
@@ -126,10 +127,26 @@ console.log(json);
                     data:JSON.stringify(jsonData)
                 },
                 function(data, status){
-                	alert(status);
+                	if(data.trim()=="Successfully Added"){
+                    $("#status").html("Products Added Successfully to Inventory");
+                    $("#myModal").modal('show');
+                  } else{
+                    $("#status").html("Failed to add products to inventory");
+                    $("#myModal").modal('show');
+                  }
                 });
     });
-    
+    $("#closeModal").click(function(){
+      $("#myModal").modal('hide');
+    });
+    $("#closeFormModal").click(function(){
+      $("#productForm").modal('hide');
+    });
+
+    $("#addProductToList").click(function(){
+      
+      $("#productForm").modal('show');
+    });
 });
 </script>
 </head>
@@ -175,26 +192,8 @@ console.log(json);
         <p>Some text..</p>
       </div>
       <div class="row">
-        <div class="col-sm-12">
-          
-            <form>
-                <input type="text" class="form-control" placeholder="Product Name" id="pn" style="width: 20%;float: left;">
-                <input type="text" class="form-control" placeholder="batch No" id="bn" style="width: 20%;float: left;">
-                <select class="form-control form-select" placeholder="Category" id="cat" style="width: 20%;">
-                    <option>Cosmetics</option>
-                    <option>Grooming</option>
-                    <option>Cookies</option>
-                    <option>Grocery</option>
-                    </select>
-                <br/>
-                <input type="date" class="form-control" placeholder="Expiry Date" id="ed" style="width: 20%;float: left;">
-                <input type="text" class="form-control" placeholder="qty" id="qty" style="width: 20%;float: left;">
-                <input type="text" class="form-control" placeholder="Cp Per unit" id="cp" style="width: 20%;">
-                <br/>
-                <input type="text" class="form-control" placeholder="Sp Per Unit" id="sp" style="width: 20%;float: left;">
-                <button type="button" id="addProduct" class="btn btn-primary" >Add Product</button>
-                <button type="button" id="addToInventory" class="btn btn-primary" >Add To Inventory</button>
-            </form>
+        <button type="button" id="addProductToList" class="btn btn-primary" >Add Product To List</button>
+        <button type="button" id="addToInventory" class="btn btn-primary" >Add To Inventory</button>
             <table class="table data-table" id="productTable">
                 <thead>
                   <tr>
@@ -212,6 +211,88 @@ console.log(json);
                   
                 </tbody>
               </table>
+
+             <!-- Modal Start add product confirmation-->
+             <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Product Add Confirmation</h4>
+                    
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body" id="status">
+                    Products Added Successfully to Inventory
+                  </div>
+            
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeModal">Close</button>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+
+            <!-- End of Modal -->
+              
+
+
+
+            <!--Add Product detail form-->
+            
+
+
+
+
+
+            <div class="modal" id="productForm">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Product Add Confirmation</h4>
+                    
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body" id="status">
+                    <div class="row">
+                      <div class="col-sm-12">
+              
+                        <form>
+                            <input type="text" class="form-control" placeholder="Product Name" id="pn" style="width: 20%;float: left;">
+                            <input type="text" class="form-control" placeholder="batch No" id="bn" style="width: 20%;float: left;">
+                            <select class="form-control form-select" placeholder="Category" id="cat" style="width: 20%;">
+                                <option>Cosmetics</option>
+                                <option>Grooming</option>
+                                <option>Cookies</option>
+                                <option>Grocery</option>
+                                </select>
+                            <br/>
+                            <input type="date" class="form-control" placeholder="Expiry Date" id="ed" style="width: 20%;float: left;">
+                            <input type="text" class="form-control" placeholder="qty" id="qty" style="width: 20%;float: left;">
+                            <input type="text" class="form-control" placeholder="Cp Per unit" id="cp" style="width: 20%;">
+                            <br/>
+                            <input type="text" class="form-control" placeholder="Sp Per Unit" id="sp" style="width: 20%;float: left;">
+                            <button type="button" id="addProduct" class="btn btn-primary" >Add Product</button>
+                            
+                        </form></div>
+                    </div>
+                  </div>
+            
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="closeFormModal">Close</button>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
         </div>
         
         
