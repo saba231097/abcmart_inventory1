@@ -38,7 +38,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Add Products</a></li>
+        <li><a href="add_products.jsp">Add Products</a></li>
         <li><a href="#">Update Products</a></li>
         <li><a href="#">List Products</a></li>
       </ul>
@@ -52,7 +52,7 @@
       <h2><img class="img-circle" src="resources/images/DP.jpg" width="50" height="50"></h2>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#section1">Dashboard</a></li>
-        <li><a href="#section2">Add Products</a></li>
+        <li><a href="add_products.jsp">Add Products</a></li>
         <li><a href="#section3">Update Products</a></li>
         <li><a href="#section3">List Products</a></li>
       </ul><br>

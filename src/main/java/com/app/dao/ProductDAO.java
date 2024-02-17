@@ -3,9 +3,10 @@ package com.app.dao;
 import com.app.beans.Product;
 import com.app.utils.DBConnection;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
+import static java.sql.ResultSet.CONCUR_READ_ONLY;
+import static java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE;
 
 public class ProductDAO {
     public boolean addProductsToInvenDB(Product[] products){
@@ -39,6 +40,7 @@ public class ProductDAO {
         }
         return false;
     }
+
 
 
 }

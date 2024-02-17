@@ -42,7 +42,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>abc</finalName>
+		<finalName>abcinventory</finalName>
 	</build>
 	
 	
